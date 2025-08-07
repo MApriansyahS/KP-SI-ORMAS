@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Sistem Informasi Organisasi Masyarakat</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.php" class="logo d-flex align-items-center me-auto me-xl-0">
+         <img src="assets/img/logo.png" alt="">
+         <h1 class="sitename">SI-ORMAS</h1> 
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.php#hero" class="active">Beranda</a></li>
+          <li><a href="index.php#about">Seputar Ormas</a></li>
+          <li><a href="index.php#services">Layanan</a></li>
+          <li><a href="index.php#portfolio">Data Ormas</a></li>
+          <li><a href="blog.php">Kegiatan Ormas</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <!-- <a class="cta-btn" href="#about">Get Started</a>-->
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <img src="assets/img/hero-bg.jpeg" alt="" data-aos="fade-in">
+
+      <div class="container d-flex flex-column align-items-center text-center">
+        <h2 data-aos="fade-up" data-aos-delay="100">SI-ORMAS</h2>
+        <p data-aos="fade-up" data-aos-delay="200">Sistem Informasi Organisasi Masyarakat</p>
+        <div data-aos="fade-up" data-aos-delay="300">
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Section Form Input Data Organisasi Masyarakat -->
+    <section id="input-ormas" class="input-ormas section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Form Input Data Organisasi Masyarakat</h2>
+        <p>Silakan isi data sesuai dokumen dan persyaratan yang berlaku.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <form id="form-ormas" action="forms/input_ormas.php" method="post" enctype="multipart/form-data">
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label>Nama Ormas</label>
+              <input type="text" class="form-control" name="nama_ormas" placeholder="Masukkan nama organisasi masyarakat" title="Nama Organisasi Masyarakat" required>
+            </div>
+            <div class="col-md-6">
+              <label>Singkatan</label>
+              <input type="text" class="form-control" name="singkatan" placeholder="Masukkan singkatan organisasi" title="Singkatan Organisasi" required>
+            </div>
+            <div class="col-md-6">
+              <label>Jenis</label>
+              <input type="text" class="form-control" name="jenis" placeholder="Masukkan jenis organisasi" title="Jenis Organisasi" required>
+            </div>
+            <div class="col-md-6">
+              <label>Bidang</label>
+              <input type="text" class="form-control" name="bidang" placeholder="Masukkan bidang organisasi" title="Bidang Organisasi" required>
+            </div>
+            <div class="col-md-12">
+              <label>Alamat Kesekretariatan</label>
+              <input type="text" class="form-control" name="alamat_kesekretariatan" placeholder="Masukkan alamat kesekretariatan" title="Alamat Kesekretariatan" required>
+            </div>
+            <div class="col-md-6">
+              <label>Kecamatan</label>
+              <input type="text" class="form-control" name="kecamatan" placeholder="Masukkan nama kecamatan" title="Kecamatan" required>
+            </div>
+            <div class="col-md-6">
+              <label>Desa</label>
+              <input type="text" class="form-control" name="desa" placeholder="Masukkan nama desa" title="Desa" required>
+            </div>
+            <div class="col-md-6">
+              <label>Telepon</label>
+              <input type="text" class="form-control" name="telepon" placeholder="Masukkan nomor telepon" title="Telepon" required>
+            </div>
+            <div class="col-md-6">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email" placeholder="Masukkan email" title="Email" required>
+            </div>
+          </div>
+          <hr>
+          <h4>Legalitas</h4>
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label>Legalitas</label>
+              <input type="text" class="form-control" name="legalitas" placeholder="Masukkan nama legalitas" title="Legalitas" required>
+            </div>
+            <div class="col-md-6">
+              <label>Nomor Surat</label>
+              <input type="text" class="form-control" name="nomor_surat" placeholder="Masukkan nomor surat" title="Nomor Surat" required>
+            </div>
+            <div class="col-md-6">
+              <label>Tanggal Terbit</label>
+              <input type="date" class="form-control" name="tanggal_terbit" placeholder="Masukkan tanggal terbit" title="Tanggal Terbit" required>
+            </div>
+            <div class="col-md-6">
+              <label>NPWP Organisasi</label>
+              <input type="text" class="form-control" name="npwp" placeholder="Masukkan NPWP organisasi" title="NPWP Organisasi" required>
+            </div>
+          </div>
+          <hr>
+          <h4>Biodata Pengurus</h4>
+          <div class="row gy-3">
+            <div class="col-md-4">
+              <label>Nama Ketua</label>
+              <input type="text" class="form-control" name="nama_ketua" placeholder="Masukkan nama ketua" title="Nama Ketua" required>
+            </div>
+            <div class="col-md-4">
+              <label>Alamat Ketua</label>
+              <input type="text" class="form-control" name="alamat_ketua" placeholder="Masukkan alamat ketua" title="Alamat Ketua" required>
+            </div>
+            <div class="col-md-4">
+              <label>No. Telepon Ketua</label>
+              <input type="text" class="form-control" name="telepon_ketua" placeholder="Masukkan nomor telepon ketua" title="Telepon Ketua" required>
+            </div>
+            <div class="col-md-4">
+              <label>Nama Sekretaris</label>
+              <input type="text" class="form-control" name="nama_sekretaris" placeholder="Masukkan nama sekretaris" title="Nama Sekretaris" required>
+            </div>
+            <div class="col-md-4">
+              <label>Alamat Sekretaris</label>
+              <input type="text" class="form-control" name="alamat_sekretaris" placeholder="Masukkan alamat sekretaris" title="Alamat Sekretaris" required>
+            </div>
+            <div class="col-md-4">
+              <label>No. Telepon Sekretaris</label>
+              <input type="text" class="form-control" name="telepon_sekretaris" placeholder="Masukkan nomor telepon sekretaris" title="Telepon Sekretaris" required>
+            </div>
+            <div class="col-md-4">
+              <label>Nama Bendahara</label>
+              <input type="text" class="form-control" name="nama_bendahara" placeholder="Masukkan nama bendahara" title="Nama Bendahara" required>
+            </div>
+            <div class="col-md-4">
+              <label>Alamat Bendahara</label>
+              <input type="text" class="form-control" name="alamat_bendahara" placeholder="Masukkan alamat bendahara" title="Alamat Bendahara" required>
+            </div>
+            <div class="col-md-4">
+              <label>No. Telepon Bendahara</label>
+              <input type="text" class="form-control" name="telepon_bendahara" placeholder="Masukkan nomor telepon bendahara" title="Bendahara" required>
+            </div>
+          </div>
+          <hr>
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success">Kirim Data</button>
+          </div>
+        </form>
+        <div id="response-ormas" style="margin-top:20px;"></div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          let form = document.getElementById('form-ormas');
+          let responseDiv = document.getElementById('response-ormas');
+
+          if(form) {
+            form.addEventListener('submit', function(e) {
+              e.preventDefault(); // Agar halaman tidak reload
+
+              responseDiv.innerHTML = ''; // Kosongkan pesan sebelumnya
+              let formData = new FormData(form);
+              let submitBtn = form.querySelector('button[type="submit"]');
+              if (submitBtn) submitBtn.disabled = true; // Disable tombol saat kirim
+
+              fetch(form.action, {
+                method: 'POST',
+                body: formData
+              })
+              .then(response => response.json())
+              .then(data => {
+                if (submitBtn) submitBtn.disabled = false;
+                if(data.success){
+                  responseDiv.innerHTML = '<span style="color:green;font-weight:bold;">' + data.success + '</span>';
+                  form.reset(); // Kosongkan form agar bisa isi lagi
+                } else if(data.error){
+                  responseDiv.innerHTML = '<span style="color:red;font-weight:bold;">' + data.error + '</span>';
+                } else {
+                  responseDiv.innerHTML = '<span style="color:red;font-weight:bold;">Terjadi kesalahan!</span>';
+                }
+                responseDiv.scrollIntoView({behavior: 'smooth'});
+              })
+              .catch(() => {
+                if (submitBtn) submitBtn.disabled = false;
+                responseDiv.innerHTML = '<span style="color:red;font-weight:bold;">Terjadi kesalahan jaringan!</span>';
+                responseDiv.scrollIntoView({behavior: 'smooth'});
+              });
+            });
+          }
+        });
+        </script>
+      </div>
+    </section><!-- End Section Form Input Data Organisasi Masyarakat -->
+
+    <!-- kontak Section -->
+    <section id="kontak" class="kontak section dark-background" style="position:relative;overflow:hidden;">
+      <img src="assets/img/cta-bg.jpg" alt="" style="width:100%;max-height:280px;object-fit:cover;opacity:0.18;position:absolute;left:0;top:0;z-index:0;">
+      <div class="container position-relative" style="z-index:1;">
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-8 text-center text-xl-start">
+            <h2>kontak & Bantuan SI-ORMAS</h2>
+            <p>Jika Anda membutuhkan bantuan, pertanyaan, saran, atau informasi lebih lanjut terkait SI-ORMAS, silakan hubungi admin melalui email di bawah ini.</p>
+          </div>
+            <div class="col-xl-4 cta-btn-container text-center">
+              <a class="cta-btn align-middle btn btn-success" href="mailto:kesbangpol_natuna@yahoo.com">Hubungi Admin via Email</a>
+            </div>
+          </div>
+          <div class="row gy-4 mt-4">
+            <div class="col-lg-6">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Alamat</h3>
+                  <p>Komplek Natuna Gerbang Utaraku,</p>
+                  <p>Gedung Diklat I lantai 2.</p>
+                  <p>Ranai, Kab. Natuna – Prov. Kepulauan Riau</p>
+                </div>
+              </div>
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Telepon</h3>
+                  <p>+62</p>
+                </div>
+              </div>
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p><a href="mailto:kesbangpol_natuna@yahoo.com">kesbangpol_natuna@yahoo.com</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6" style="display:flex;align-items:center;justify-content:center;">
+              <!-- Optional: Google Maps jika ingin -->
+              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /kontak Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3 class="sitename">SI-ORMAS</h3>
+      <p>Sistem Informasi Organisasi Masyarakat</p>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">SI-ORMAS</strong> <span>All Rights Reserved</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
