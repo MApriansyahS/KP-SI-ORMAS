@@ -51,7 +51,7 @@ $conn->query("CREATE TABLE IF NOT EXISTS kegiatan_ormas (
     nama_kegiatan VARCHAR(200) NOT NULL,
     tanggal_kegiatan DATE NOT NULL,
     ormas_penyelenggara VARCHAR(100) NOT NULL,
-    foto_kegiatan VARCHAR(255),
+    link_foto_kegiatan VARCHAR(255),
     deskripsi_singkat VARCHAR(255) NOT NULL,
     deskripsi_lengkap TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

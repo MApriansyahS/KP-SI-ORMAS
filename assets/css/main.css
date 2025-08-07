@@ -1578,6 +1578,10 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
 
+/* Pastikan article/card relatif agar absolute pada tombol tepat */
+article {
+  position: relative;
+}
 /*--------------------------------------------------------------
 # Portfolio Details Section
 --------------------------------------------------------------*/
@@ -1836,6 +1840,7 @@ section,
   height: 100%;
   border-radius: 10px;
   overflow: hidden;
+  
 }
 
 .blog-posts .post-img {

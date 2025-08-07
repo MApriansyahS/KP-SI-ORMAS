@@ -85,9 +85,9 @@
                 <div class="container">
                   <?php if ($detail): ?>
                   <article class="article">
-                    <div class="post-img">
-                      <img src="<?php echo htmlspecialchars($detail['foto_kegiatan']); ?>" alt="" class="img-fluid">
-                    </div>
+                  <div class="post-img">
+                    <img src="<?php echo htmlspecialchars($detail['link_foto_kegiatan']); ?>" alt="" class="img-fluid">
+                  </div>
                     <h2 class="title"><?php echo htmlspecialchars($detail['nama_kegiatan']); ?></h2>
                     <div class="meta-top">
                       <ul>
@@ -111,6 +111,7 @@
                     <div class="alert alert-warning">Kegiatan tidak ditemukan.</div>
                   <?php endif; ?>
                 </div>
+
               </section><!-- /Blog Details Section -->
 
             </div>
@@ -138,11 +139,11 @@
                 <div class="recent-posts-widget widget-item">
                   <h3 class="widget-title">Kegiatan Terbaru</h3>
                   <?php
-                  $res = $conn->query("SELECT id, nama_kegiatan, foto_kegiatan, tanggal_kegiatan FROM kegiatan_ormas ORDER BY tanggal_kegiatan DESC LIMIT 3");
+                  $res = $conn->query("SELECT id, nama_kegiatan, link_foto_kegiatan, tanggal_kegiatan FROM kegiatan_ormas ORDER BY tanggal_kegiatan DESC LIMIT 3");
                   while ($rec = $res->fetch_assoc()):
                   ?>
                     <div class="post-item d-flex align-items-center mb-2">
-                      <img src="<?php echo htmlspecialchars($rec['foto_kegiatan']); ?>" alt="" class="flex-shrink-0">
+                      <img src="<?php echo htmlspecialchars($rec['link_foto_kegiatan']); ?>" alt="" class="flex-shrink-0">
                       <div class="ms-2">
                         <h4 style="font-size:1rem;"><a href="blog-details.php?id=<?php echo $rec['id']; ?>"><?php echo htmlspecialchars($rec['nama_kegiatan']); ?></a></h4>
                         <time datetime="<?php echo $rec['tanggal_kegiatan']; ?>"><?php echo date('d F Y', strtotime($rec['tanggal_kegiatan'])); ?></time>

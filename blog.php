@@ -71,31 +71,110 @@ $conn->close();
         <div class="row gy-4">
           <?php if(count($kegiatan) > 0): foreach ($kegiatan as $item): ?>
           <div class="col-lg-4">
-            <article>
-              <div class="post-img">
-                <img src="<?php echo htmlspecialchars($item['foto_kegiatan']); ?>" alt="" class="img-fluid" style="width:100%;height:220px;object-fit:cover;">
+          <article>
+            <div class="post-img">
+              <img src="<?= htmlspecialchars($item['link_foto_kegiatan']) ?>" alt="" class="img-fluid" style="width:100%;height:220px;object-fit:cover;">
+            </div>
+            <h2 class="title">
+              <a href="blog-details.php?id=<?= $item['id'] ?>"><?= htmlspecialchars($item['nama_kegiatan']) ?></a>
+            </h2>
+            <div class="d-flex align-items-center">
+              <img src="<?= htmlspecialchars($item['link_foto_kegiatan']) ?>" alt="" class="img-fluid post-author-img flex-shrink-0" style="width:40px;height:40px;object-fit:cover;">
+              <div class="post-meta">
+                <p class="post-author"><?= htmlspecialchars($item['ormas_penyelenggara']) ?></p>
+                <p class="post-date">
+                  <time datetime="<?= $item['tanggal_kegiatan'] ?>">
+                    <?= date('d F Y', strtotime($item['tanggal_kegiatan'])) ?>
+                  </time>
+                </p>
               </div>
-              <h2 class="title">
-                <a href="blog-details.php?id=<?php echo $item['id']; ?>"><?php echo htmlspecialchars($item['nama_kegiatan']); ?></a>
-              </h2>
-              <div class="d-flex align-items-center">
-                <img src="<?php echo htmlspecialchars($item['foto_kegiatan']); ?>" alt="" class="img-fluid post-author-img flex-shrink-0" style="width:40px;height:40px;object-fit:cover;">
-                <div class="post-meta">
-                  <p class="post-author"><?php echo htmlspecialchars($item['ormas_penyelenggara']); ?></p>
-                  <p class="post-date">
-                    <time datetime="<?php echo $item['tanggal_kegiatan']; ?>">
-                      <?php echo date('d F Y', strtotime($item['tanggal_kegiatan'])); ?>
-                    </time>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
+            </div>
+            <div class="card-actions">
+              <button type="button"
+                class="btn btn-sm btn-warning btn-edit-kegiatan"
+                title="Edit"
+                data-id="<?= $item['id'] ?>"
+                data-nama="<?= htmlspecialchars($item['nama_kegiatan'], ENT_QUOTES) ?>"
+                data-ormas="<?= htmlspecialchars($item['ormas_penyelenggara'], ENT_QUOTES) ?>"
+                data-tanggal="<?= $item['tanggal_kegiatan'] ?>"
+                data-foto="<?= htmlspecialchars($item['link_foto_kegiatan'], ENT_QUOTES) ?>"
+                data-singkat="<?= htmlspecialchars($item['deskripsi_singkat'], ENT_QUOTES) ?>"
+                data-lengkap="<?= htmlspecialchars($item['deskripsi_lengkap'], ENT_QUOTES) ?>">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <form method="POST" action="forms/delete_kegiatan.php" style="display:inline;" onsubmit="return confirm('Yakin hapus kegiatan ini?');">
+                <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </form>
+            </div>
+          </article>
+        </div>
           <?php endforeach; else: ?>
             <div class="col-12 text-center"><em>Tidak ada data kegiatan ORMAS.</em></div>
           <?php endif; ?>
         </div>
       </div>
+      <!-- Modal Edit Kegiatan -->
+      <div class="modal fade" id="modalEditKegiatan" tabindex="-1" aria-labelledby="modalEditKegiatanLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <form method="post" id="formEditKegiatan" action="forms/edit_kegiatan.php">
+            <input type="hidden" name="id" id="edit_id">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalEditKegiatanLabel">Edit Kegiatan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-2">
+                  <label>Nama Kegiatan</label>
+                  <input type="text" name="nama_kegiatan" id="edit_nama_kegiatan" class="form-control" required>
+                </div>
+                <div class="mb-2">
+                  <label>Ormas Penyelenggara</label>
+                  <input type="text" name="ormas_penyelenggara" id="edit_ormas_penyelenggara" class="form-control" required>
+                </div>
+                <div class="mb-2">
+                  <label>Tanggal Kegiatan</label>
+                  <input type="date" name="tanggal_kegiatan" id="edit_tanggal_kegiatan" class="form-control" required>
+                </div>
+                <div class="mb-2">
+                  <label>Link Foto Kegiatan</label>
+                  <input type="url" name="link_foto_kegiatan" id="edit_link_foto_kegiatan" class="form-control" placeholder="https://..." required>
+                </div>
+                <div class="mb-2">
+                  <label>Deskripsi Singkat</label>
+                  <input type="text" name="deskripsi_singkat" id="edit_deskripsi_singkat" class="form-control">
+                </div>
+                <div class="mb-2">
+                  <label>Deskripsi Lengkap</label>
+                  <textarea name="deskripsi_lengkap" id="edit_deskripsi_lengkap" rows="4" class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <script>
+      document.querySelectorAll('.btn-edit-kegiatan').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.getElementById('edit_id').value = this.getAttribute('data-id');
+          document.getElementById('edit_nama_kegiatan').value = this.getAttribute('data-nama');
+          document.getElementById('edit_ormas_penyelenggara').value = this.getAttribute('data-ormas');
+          document.getElementById('edit_tanggal_kegiatan').value = this.getAttribute('data-tanggal');
+          document.getElementById('edit_link_foto_kegiatan').value = this.getAttribute('data-foto');
+          document.getElementById('edit_deskripsi_singkat').value = this.getAttribute('data-singkat');
+          document.getElementById('edit_deskripsi_lengkap').value = this.getAttribute('data-lengkap');
+          var modal = new bootstrap.Modal(document.getElementById('modalEditKegiatan'));
+          modal.show();
+        });
+      });
+      </script>
     </section>
 
     <!-- Blog Pagination Section (optional) -->

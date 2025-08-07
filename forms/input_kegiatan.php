@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $fields = [
-    'nama_kegiatan', 'tanggal_kegiatan', 'ormas_penyelenggara', 'deskripsi_singkat', 'deskripsi_lengkap'
+    'nama_kegiatan', 'tanggal_kegiatan', 'ormas_penyelenggara', 'deskripsi_singkat', 'deskripsi_lengkap', 'link_foto_kegiatan'
 ];
 $data = [];
 foreach ($fields as $field) {
@@ -17,26 +17,6 @@ foreach ($fields as $field) {
         echo json_encode(['error' => "Field $field wajib diisi."]);
         exit;
     }
-}
-
-// Penanganan upload foto
-$foto_path = '';
-if (isset($_FILES['foto_kegiatan']) && $_FILES['foto_kegiatan']['error'] == UPLOAD_ERR_OK) {
-    $uploadDir = __DIR__ . '/uploads/';
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
-    $filename = uniqid() . '_' . basename($_FILES['foto_kegiatan']['name']);
-    $targetFile = $uploadDir . $filename;
-    if (move_uploaded_file($_FILES['foto_kegiatan']['tmp_name'], $targetFile)) {
-        $foto_path = 'forms/uploads/' . $filename;
-    } else {
-        echo json_encode(['error' => 'Gagal upload foto kegiatan.']);
-        exit;
-    }
-} else {
-    echo json_encode(['error' => 'Foto kegiatan wajib diupload.']);
-    exit;
 }
 
 // Tambahkan pengecekan duplikat berdasarkan nama_kegiatan & tanggal_kegiatan
@@ -53,11 +33,11 @@ if ($cek->num_rows > 0) {
 $cek->close();
 
 $stmt = $conn->prepare("INSERT INTO kegiatan_ormas (
-    nama_kegiatan, tanggal_kegiatan, ormas_penyelenggara, foto_kegiatan, deskripsi_singkat, deskripsi_lengkap
+    nama_kegiatan, tanggal_kegiatan, ormas_penyelenggara, link_foto_kegiatan, deskripsi_singkat, deskripsi_lengkap
 ) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param(
     "ssssss",
-    $data['nama_kegiatan'], $data['tanggal_kegiatan'], $data['ormas_penyelenggara'], $foto_path, $data['deskripsi_singkat'], $data['deskripsi_lengkap']
+    $data['nama_kegiatan'], $data['tanggal_kegiatan'], $data['ormas_penyelenggara'], $data['link_foto_kegiatan'], $data['deskripsi_singkat'], $data['deskripsi_lengkap']
 );
 
 if ($stmt->execute()) {

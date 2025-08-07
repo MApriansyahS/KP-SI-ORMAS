@@ -379,12 +379,229 @@
                 <th>Alamat</th>
                 <th>Nama Ketua</th>
                 <th>Status</th>
+                <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
               <?php include 'data_ormas.php'; ?>
             </tbody>
           </table>
+          <!-- Modal Lihat ORMAS -->
+        <div class="modal fade" id="modalLihatOrmas" tabindex="-1" aria-labelledby="modalLihatOrmasLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalLihatOrmasLabel">Detail Data ORMAS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+              </div>
+              <div class="modal-body">
+                <dl class="row" id="detailOrmasBody">
+                  <!-- Data akan diisi oleh JS -->
+                </dl>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Edit ORMAS -->
+        <div class="modal fade" id="modalEditOrmas" tabindex="-1" aria-labelledby="modalEditOrmasLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <form class="modal-content" id="formEditOrmas">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalEditOrmasLabel">Edit Data ORMAS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" name="id" id="edit_id">
+                <div class="row gy-3">
+                  <!-- Form fields mirip input_data_ormas.html, gunakan id edit_nama_field -->
+                  <div class="col-md-6">
+                    <label>Nama Ormas</label>
+                    <input type="text" class="form-control" name="nama_ormas" id="edit_nama_ormas" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Singkatan</label>
+                    <input type="text" class="form-control" name="singkatan" id="edit_singkatan" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Jenis</label>
+                    <input type="text" class="form-control" name="jenis" id="edit_jenis" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Bidang</label>
+                    <input type="text" class="form-control" name="bidang" id="edit_bidang" required>
+                  </div>
+                  <div class="col-md-12">
+                    <label>Alamat Kesekretariatan</label>
+                    <input type="text" class="form-control" name="alamat_kesekretariatan" id="edit_alamat_kesekretariatan" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Kecamatan</label>
+                    <input type="text" class="form-control" name="kecamatan" id="edit_kecamatan" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Desa</label>
+                    <input type="text" class="form-control" name="desa" id="edit_desa" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Telepon</label>
+                    <input type="text" class="form-control" name="telepon" id="edit_telepon" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" id="edit_email" required>
+                  </div>
+                </div>
+                <hr>
+                <h4>Legalitas</h4>
+                <div class="row gy-3">
+                  <div class="col-md-6">
+                    <label>Legalitas</label>
+                    <input type="text" class="form-control" name="legalitas" id="edit_legalitas">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Nomor Surat</label>
+                    <input type="text" class="form-control" name="nomor_surat" id="edit_nomor_surat">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Tanggal Terbit</label>
+                    <input type="date" class="form-control" name="tanggal_terbit" id="edit_tanggal_terbit">
+                  </div>
+                  <div class="col-md-6">
+                    <label>NPWP Organisasi</label>
+                    <input type="text" class="form-control" name="npwp" id="edit_npwp">
+                  </div>
+                </div>
+                <hr>
+                <h4>Biodata Pengurus</h4>
+                <div class="row gy-3">
+                  <div class="col-md-4">
+                    <label>Nama Ketua</label>
+                    <input type="text" class="form-control" name="nama_ketua" id="edit_nama_ketua" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Alamat Ketua</label>
+                    <input type="text" class="form-control" name="alamat_ketua" id="edit_alamat_ketua" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>No. Telepon Ketua</label>
+                    <input type="text" class="form-control" name="telepon_ketua" id="edit_telepon_ketua" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Nama Sekretaris</label>
+                    <input type="text" class="form-control" name="nama_sekretaris" id="edit_nama_sekretaris" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Alamat Sekretaris</label>
+                    <input type="text" class="form-control" name="alamat_sekretaris" id="edit_alamat_sekretaris" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>No. Telepon Sekretaris</label>
+                    <input type="text" class="form-control" name="telepon_sekretaris" id="edit_telepon_sekretaris" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Nama Bendahara</label>
+                    <input type="text" class="form-control" name="nama_bendahara" id="edit_nama_bendahara" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Alamat Bendahara</label>
+                    <input type="text" class="form-control" name="alamat_bendahara" id="edit_alamat_bendahara" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>No. Telepon Bendahara</label>
+                    <input type="text" class="form-control" name="telepon_bendahara" id="edit_telepon_bendahara" required>
+                  </div>
+                </div>
+                <div id="editOrmasMsg" class="mt-3"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Tombol Lihat
+          document.querySelectorAll('.btn-lihat-ormas').forEach(btn => {
+            btn.addEventListener('click', function() {
+              let data = JSON.parse(this.getAttribute('data-ormas'));
+              let isi = '';
+              const fieldMap = {
+                'nama_ormas': 'Nama ORMAS',
+                'singkatan': 'Singkatan',
+                'jenis': 'Jenis',
+                'bidang': 'Bidang',
+                'alamat_kesekretariatan': 'Alamat Kesekretariatan',
+                'kecamatan': 'Kecamatan',
+                'desa': 'Desa',
+                'telepon': 'Telepon',
+                'email': 'Email',
+                'legalitas': 'Legalitas',
+                'nomor_surat': 'Nomor Surat',
+                'tanggal_terbit': 'Tanggal Terbit',
+                'npwp': 'NPWP',
+                'nama_ketua': 'Nama Ketua',
+                'alamat_ketua': 'Alamat Ketua',
+                'telepon_ketua': 'Telepon Ketua',
+                'nama_sekretaris': 'Nama Sekretaris',
+                'alamat_sekretaris': 'Alamat Sekretaris',
+                'telepon_sekretaris': 'Telepon Sekretaris',
+                'nama_bendahara': 'Nama Bendahara',
+                'alamat_bendahara': 'Alamat Bendahara',
+                'telepon_bendahara': 'Telepon Bendahara',
+              };
+              for (const [key, label] of Object.entries(fieldMap)) {
+                isi += `<dt class="col-sm-4">${label}</dt><dd class="col-sm-8">${data[key] ? data[key] : '-'}</dd>`;
+              }
+              document.getElementById('detailOrmasBody').innerHTML = isi;
+              let modal = new bootstrap.Modal(document.getElementById('modalLihatOrmas'));
+              modal.show();
+            });
+          });
+
+          // Tombol Edit
+          document.querySelectorAll('.btn-edit-ormas').forEach(btn => {
+            btn.addEventListener('click', function() {
+              let data = JSON.parse(this.getAttribute('data-ormas'));
+              for (const key in data) {
+                let input = document.getElementById('edit_' + key);
+                if (input) input.value = data[key];
+              }
+              document.getElementById('editOrmasMsg').innerHTML = '';
+              let modal = new bootstrap.Modal(document.getElementById('modalEditOrmas'));
+              modal.show();
+            });
+          });
+
+          // Submit Edit Form
+          document.getElementById('formEditOrmas').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let form = this;
+            let formData = new FormData(form);
+            fetch('forms/edit_ormas.php', {
+              method: 'POST',
+              body: formData
+            })
+            .then(r => r.json())
+            .then(data => {
+              let msgDiv = document.getElementById('editOrmasMsg');
+              if (data.success) {
+                msgDiv.innerHTML = '<span class="text-success">'+data.success+'</span>';
+                setTimeout(()=>{ location.reload(); }, 800);
+              } else {
+                msgDiv.innerHTML = '<span class="text-danger">'+(data.error||'Gagal update!')+'</span>';
+              }
+            }).catch(()=>{
+              document.getElementById('editOrmasMsg').innerHTML = '<span class="text-danger">Terjadi kesalahan jaringan!</span>';
+            });
+          });
+        });
+        </script>
       </div>
 
     </section><!-- /Data ORMAS Section -->
@@ -469,7 +686,17 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('scroll') === 'portfolio') {
+      const section = document.getElementById('portfolio');
+      if (section) {
+        section.scrollIntoView({behavior: 'smooth'});
+      }
+    }
+  });
+</script>
 </body>
 
 </html>
