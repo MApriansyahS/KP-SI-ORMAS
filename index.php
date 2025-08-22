@@ -513,6 +513,19 @@
                     <label>No. Telepon Bendahara</label>
                     <input type="text" class="form-control" name="telepon_bendahara" id="edit_telepon_bendahara" required>
                   </div>
+                  <!-- Tambahkan di bawah Biodata Pengurus -->
+                  <hr>
+                  <h4>Periode Kepengurusan</h4>
+                  <div class="row gy-3">
+                    <div class="col-md-6">
+                      <label>Periode Mulai</label>
+                      <input type="date" class="form-control" name="periode_mulai" id="edit_periode_mulai" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Periode Selesai</label>
+                      <input type="date" class="form-control" name="periode_selesai" id="edit_periode_selesai" required>
+                    </div>
+                  </div>
                 </div>
                 <div id="editOrmasMsg" class="mt-3"></div>
               </div>
@@ -526,43 +539,48 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>
         document.addEventListener('DOMContentLoaded', () => {
-          // Tombol Lihat
-          document.querySelectorAll('.btn-lihat-ormas').forEach(btn => {
-            btn.addEventListener('click', function() {
-              let data = JSON.parse(this.getAttribute('data-ormas'));
-              let isi = '';
-              const fieldMap = {
-                'nama_ormas': 'Nama ORMAS',
-                'singkatan': 'Singkatan',
-                'jenis': 'Jenis',
-                'bidang': 'Bidang',
-                'alamat_kesekretariatan': 'Alamat Kesekretariatan',
-                'kecamatan': 'Kecamatan',
-                'desa': 'Desa',
-                'telepon': 'Telepon',
-                'email': 'Email',
-                'legalitas': 'Legalitas',
-                'nomor_surat': 'Nomor Surat',
-                'tanggal_terbit': 'Tanggal Terbit',
-                'npwp': 'NPWP',
-                'nama_ketua': 'Nama Ketua',
-                'alamat_ketua': 'Alamat Ketua',
-                'telepon_ketua': 'Telepon Ketua',
-                'nama_sekretaris': 'Nama Sekretaris',
-                'alamat_sekretaris': 'Alamat Sekretaris',
-                'telepon_sekretaris': 'Telepon Sekretaris',
-                'nama_bendahara': 'Nama Bendahara',
-                'alamat_bendahara': 'Alamat Bendahara',
-                'telepon_bendahara': 'Telepon Bendahara',
-              };
-              for (const [key, label] of Object.entries(fieldMap)) {
-                isi += `<dt class="col-sm-4">${label}</dt><dd class="col-sm-8">${data[key] ? data[key] : '-'}</dd>`;
-              }
-              document.getElementById('detailOrmasBody').innerHTML = isi;
-              let modal = new bootstrap.Modal(document.getElementById('modalLihatOrmas'));
-              modal.show();
-            });
+        // Tombol Lihat
+        document.querySelectorAll('.btn-lihat-ormas').forEach(btn => {
+          btn.addEventListener('click', function() {
+            let data = JSON.parse(this.getAttribute('data-ormas'));
+            let isi = '';
+            const fieldMap = {
+              'nama_ormas': 'Nama ORMAS',
+              'singkatan': 'Singkatan',
+              'jenis': 'Jenis',
+              'bidang': 'Bidang',
+              'alamat_kesekretariatan': 'Alamat Kesekretariatan',
+              'kecamatan': 'Kecamatan',
+              'desa': 'Desa',
+              'telepon': 'Telepon',
+              'email': 'Email',
+              'legalitas': 'Legalitas',
+              'nomor_surat': 'Nomor Surat',
+              'tanggal_terbit': 'Tanggal Terbit',
+              'npwp': 'NPWP',
+              'nama_ketua': 'Nama Ketua',
+              'alamat_ketua': 'Alamat Ketua',
+              'telepon_ketua': 'Telepon Ketua',
+              'nama_sekretaris': 'Nama Sekretaris',
+              'alamat_sekretaris': 'Alamat Sekretaris',
+              'telepon_sekretaris': 'Telepon Sekretaris',
+              'nama_bendahara': 'Nama Bendahara',
+              'alamat_bendahara': 'Alamat Bendahara',
+              'telepon_bendahara': 'Telepon Bendahara',
+            };
+            for (const [key, label] of Object.entries(fieldMap)) {
+              isi += `<dt class="col-sm-4">${label}</dt><dd class="col-sm-8">${data[key] ? data[key] : '-'}</dd>`;
+            }
+            // Tambahkan periode kepengurusan
+            isi += `<dt class="col-sm-4">Periode Kepengurusan</dt>
+                    <dd class="col-sm-8">
+                      ${data['periode_mulai'] ? data['periode_mulai'] : '-'} s/d ${data['periode_selesai'] ? data['periode_selesai'] : '-'}
+                    </dd>`;
+            document.getElementById('detailOrmasBody').innerHTML = isi;
+            let modal = new bootstrap.Modal(document.getElementById('modalLihatOrmas'));
+            modal.show();
           });
+        });
 
           // Tombol Edit
           document.querySelectorAll('.btn-edit-ormas').forEach(btn => {
@@ -646,10 +664,8 @@
               </div>
             </div>
             <div class="col-lg-6" style="display:flex;align-items:center;justify-content:center;">
-              <!-- Optional: Google Maps jika ingin -->
-              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.331045686093!2d108.38001007480013!3d3.952008796021742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ec69c57ff5c0e3%3A0x9edb761b9951c9d8!2sBadan%20Kesatuan%20Bangsa%20dan%20Politik%20(Bakesbangpol)!5e0!3m2!1sen!2sus!4v1754552079833!5m2!1sen!2sus" width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
             </div>
-          </div>
         </div>
       </section>
       <!-- /kontak Section -->

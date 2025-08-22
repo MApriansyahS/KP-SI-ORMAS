@@ -124,7 +124,7 @@
                 <div class="blog-author-widget widget-item">
                   <div class="d-flex flex-column align-items-center">
                     <div class="d-flex align-items-center w-100">
-                      <img src="assets/img/blog/blog-author.jpeg" class="rounded-circle flex-shrink-0" alt="">
+                      <img src="assets/img/blog/blog-author.png" class="rounded-circle flex-shrink-0" alt="">
                       <div>
                         <h4>Badan Kesatuan Bangsa dan Politik Kabupaten Natuna</h4>
                       </div>
@@ -197,8 +197,7 @@
               </div>
             </div>
             <div class="col-lg-6" style="display:flex;align-items:center;justify-content:center;">
-              <!-- Optional: Google Maps jika ingin -->
-              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.331045686093!2d108.38001007480013!3d3.952008796021742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ec69c57ff5c0e3%3A0x9edb761b9951c9d8!2sBadan%20Kesatuan%20Bangsa%20dan%20Politik%20(Bakesbangpol)!5e0!3m2!1sen!2sus!4v1754552079833!5m2!1sen!2sus" width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
             </div>
           </div>
         </div>

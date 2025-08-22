@@ -16,7 +16,8 @@ $fields = [
     'legalitas', 'nomor_surat', 'tanggal_terbit', 'npwp',
     'nama_ketua', 'alamat_ketua', 'telepon_ketua',
     'nama_sekretaris', 'alamat_sekretaris', 'telepon_sekretaris',
-    'nama_bendahara', 'alamat_bendahara', 'telepon_bendahara'
+    'nama_bendahara', 'alamat_bendahara', 'telepon_bendahara',
+    'periode_mulai', 'periode_selesai'
 ];
 $data = [];
 foreach ($fields as $field) {
@@ -54,20 +55,22 @@ $stmt = $conn->prepare("INSERT INTO ormas (
     legalitas, nomor_surat, tanggal_terbit, npwp,
     nama_ketua, alamat_ketua, telepon_ketua,
     nama_sekretaris, alamat_sekretaris, telepon_sekretaris,
-    nama_bendahara, alamat_bendahara, telepon_bendahara
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    nama_bendahara, alamat_bendahara, telepon_bendahara,
+    periode_mulai, periode_selesai
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 if (!$stmt) {
     respond('error', 'Gagal menyiapkan query database.');
 }
 
 $stmt->bind_param(
-    "ssssssssssssssssssssss",
+    "ssssssssssssssssssssssss",
     $data['nama_ormas'], $data['singkatan'], $data['jenis'], $data['bidang'], $data['alamat_kesekretariatan'],
     $data['kecamatan'], $data['desa'], $data['telepon'], $data['email'], $data['legalitas'], $data['nomor_surat'],
     $data['tanggal_terbit'], $data['npwp'],
     $data['nama_ketua'], $data['alamat_ketua'], $data['telepon_ketua'],
     $data['nama_sekretaris'], $data['alamat_sekretaris'], $data['telepon_sekretaris'],
-    $data['nama_bendahara'], $data['alamat_bendahara'], $data['telepon_bendahara']
+    $data['nama_bendahara'], $data['alamat_bendahara'], $data['telepon_bendahara'],
+    $data['periode_mulai'], $data['periode_selesai']
 );
 
 if ($stmt->execute()) {

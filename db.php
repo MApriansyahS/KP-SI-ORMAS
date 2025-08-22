@@ -2,7 +2,7 @@
 // Parameter koneksi MySQL lokal
 $host = 'localhost';
 $user = 'root';
-$pass = ''; // sesuaikan password MySQL Anda
+$pass = ''; 
 $dbname = 'si_ormas';
 
 // Koneksi awal (tanpa database)
@@ -42,6 +42,8 @@ $conn->query("CREATE TABLE IF NOT EXISTS ormas (
     nama_bendahara VARCHAR(100) NOT NULL,
     alamat_bendahara VARCHAR(255) NOT NULL,
     telepon_bendahara VARCHAR(30) NOT NULL,
+    periode_mulai DATE NOT NULL,
+    periode_selesai DATE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )");
 

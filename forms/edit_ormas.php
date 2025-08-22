@@ -7,8 +7,11 @@ if ($id <= 0) { echo json_encode(['error'=>'ID tidak valid']); exit; }
 
 $fields = [
   'nama_ormas', 'singkatan', 'jenis', 'bidang', 'alamat_kesekretariatan', 'kecamatan', 'desa', 'telepon', 'email',
-  'legalitas', 'nomor_surat', 'tanggal_terbit', 'npwp', 'nama_ketua', 'alamat_ketua', 'telepon_ketua',
-  'nama_sekretaris', 'alamat_sekretaris', 'telepon_sekretaris', 'nama_bendahara', 'alamat_bendahara', 'telepon_bendahara'
+  'legalitas', 'nomor_surat', 'tanggal_terbit', 'npwp',
+  'nama_ketua', 'alamat_ketua', 'telepon_ketua',
+  'nama_sekretaris', 'alamat_sekretaris', 'telepon_sekretaris',
+  'nama_bendahara', 'alamat_bendahara', 'telepon_bendahara',
+  'periode_mulai', 'periode_selesai'
 ];
 $data = [];
 foreach ($fields as $f) {
@@ -20,16 +23,21 @@ foreach ($fields as $f) {
 
 $stmt = $conn->prepare("UPDATE ormas SET 
   nama_ormas=?, singkatan=?, jenis=?, bidang=?, alamat_kesekretariatan=?, kecamatan=?, desa=?, telepon=?, email=?,
-  legalitas=?, nomor_surat=?, tanggal_terbit=?, npwp=?, nama_ketua=?, alamat_ketua=?, telepon_ketua=?,
-  nama_sekretaris=?, alamat_sekretaris=?, telepon_sekretaris=?, nama_bendahara=?, alamat_bendahara=?, telepon_bendahara=?
+  legalitas=?, nomor_surat=?, tanggal_terbit=?, npwp=?,
+  nama_ketua=?, alamat_ketua=?, telepon_ketua=?,
+  nama_sekretaris=?, alamat_sekretaris=?, telepon_sekretaris=?,
+  nama_bendahara=?, alamat_bendahara=?, telepon_bendahara=?,
+  periode_mulai=?, periode_selesai=?
   WHERE id=?");
 $stmt->bind_param(
-  "ssssssssssssssssssssssi",
+  "sssssssssssssssssssssssii",
   $data['nama_ormas'], $data['singkatan'], $data['jenis'], $data['bidang'], $data['alamat_kesekretariatan'],
   $data['kecamatan'], $data['desa'], $data['telepon'], $data['email'], $data['legalitas'], $data['nomor_surat'],
-  $data['tanggal_terbit'], $data['npwp'], $data['nama_ketua'], $data['alamat_ketua'], $data['telepon_ketua'],
+  $data['tanggal_terbit'], $data['npwp'],
+  $data['nama_ketua'], $data['alamat_ketua'], $data['telepon_ketua'],
   $data['nama_sekretaris'], $data['alamat_sekretaris'], $data['telepon_sekretaris'],
-  $data['nama_bendahara'], $data['alamat_bendahara'], $data['telepon_bendahara'], $id
+  $data['nama_bendahara'], $data['alamat_bendahara'], $data['telepon_bendahara'],
+  $data['periode_mulai'], $data['periode_selesai'], $id
 );
 if ($stmt->execute()) {
   echo json_encode(['success' => 'Data berhasil diperbarui!']);
